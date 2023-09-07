@@ -10,7 +10,7 @@ def bs(sorted_card_list: list[int], desired_num: int) -> int:
     right: int = len(sorted_card_list) - 1
 
     while left <= right:
-        mid = left + (right - left) // 2
+        mid: int = left + (right - left) // 2
 
         if sorted_card_list[mid] == desired_num:
             return mid
