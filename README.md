@@ -9,4 +9,4 @@ problem solving and learning about DSA concepts.
 think while learning DSA concepts, the focus should be on the problem at hand. Python, for me,
 gets out of the way.
 - Every solution here is battle-tested with a set of rigorous test cases. Ensuring accuracy is non-negotiable for me, and these test cases are my guarantee that my code works as expected.
-- Coming back to types, I understand their value. To this end, I make sure to provide type hints for all variables wherever applicable. This not only aids in code readability but also minimizes potential errors and headaches.
+- Returning to the topic of types, I wholeheartedly recognize their importance. To enhance code clarity and minimize potential errors and headaches, I meticulously include type hints for all relevant variables. These hints not only make the code more readable but also act as a safeguard against unexpected issues.
