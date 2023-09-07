@@ -26,31 +26,25 @@ import unittest
 class TestBinarySearch(unittest.TestCase):
 
     def test_empty_list(self):
-        # Test when the input list is empty
         self.assertEqual(bs([], 42), -1)
 
     def test_element_not_in_list(self):
-        # Test when the desired number is not in the list
         sorted_list = [10, 20, 30, 40, 50]
         self.assertEqual(bs(sorted_list, 35), -1)
 
     def test_element_at_beginning(self):
-        # Test when the desired number is at the beginning of the list
         sorted_list = [10, 20, 30, 40, 50]
         self.assertEqual(bs(sorted_list, 10), 0)
 
     def test_element_at_end(self):
-        # Test when the desired number is at the end of the list
         sorted_list = [10, 20, 30, 40, 50]
         self.assertEqual(bs(sorted_list, 50), 4)
 
     def test_element_in_middle(self):
-        # Test when the desired number is in the middle of the list
         sorted_list = [10, 20, 30, 40, 50]
         self.assertEqual(bs(sorted_list, 30), 2)
 
     def test_duplicate_elements(self):
-        # Test when there are duplicate elements in the list
         sorted_list = [10, 20, 30, 30, 40, 50]
         self.assertEqual(bs(sorted_list, 30), 2)
 
