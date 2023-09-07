@@ -1,6 +1,6 @@
 # Solving DSA Problems in Python
 
-Welcome to my DSA problem-solving repository. Here is try and tackle Data Structures and
+Welcome to my DSA problem-solving repository. Here I try and tackle Data Structures and
 algorithm challenges using Python 🐍. This repository is me documenting my journey to get better at
 problem solving and learning about DSA concepts.
 
