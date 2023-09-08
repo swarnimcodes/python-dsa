@@ -4,6 +4,8 @@ She arranges the cards in decreasing order, and lays them out face down in a seq
 She challenges Bob to pick out the card containing a given number by turning over as few cards as possible.
 Write a function to help Bob locate the card.
 """
+import unittest
+
 
 def bs(sorted_card_list: list[int], desired_num: int) -> int:
     left: int = 0
@@ -12,7 +14,7 @@ def bs(sorted_card_list: list[int], desired_num: int) -> int:
     while left <= right:
         mid: int = left + (right - left) // 2
 
-        if sorted_card_list[mid] == desired_num:
+        if sorted_card_list[mid] == desired_num and sorted_card_list[mid - 1] != desired_num:
             return mid
         elif sorted_card_list[mid] < desired_num:
             left = mid + 1
@@ -20,8 +22,6 @@ def bs(sorted_card_list: list[int], desired_num: int) -> int:
             right = mid - 1
     return -1
 
-
-import unittest
 
 class TestBinarySearch(unittest.TestCase):
 
@@ -45,8 +45,8 @@ class TestBinarySearch(unittest.TestCase):
         self.assertEqual(bs(sorted_list, 30), 2)
 
     def test_duplicate_elements(self):
-        sorted_list = [10, 20, 30, 30, 40, 50]
-        self.assertEqual(bs(sorted_list, 30), 2)
+        sorted_list = [10, 20, 20, 20, 30, 30, 30, 30, 30, 30, 30, 40, 50]
+        self.assertEqual(bs(sorted_list, 30), 4)
 
 if __name__ == '__main__':
     unittest.main()
