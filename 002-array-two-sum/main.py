@@ -84,6 +84,8 @@ Mathematical analysis of quicksort shows that, on average, the algorithm
 takes O(n log n) comparisons to sort n items.
 In the worst case, it makes O(n^2) comparisons.
 
+The recursive nature of quicksort lends itself to parellelism.
+
 To learn more about quicksort: https://en.wikipedia.org/wiki/Quicksort
 """
 def partition(arr: list[int], lo: int, hi: int) -> int:
@@ -104,12 +106,12 @@ def quicksort(arr: list[int], lo: int, hi: int) -> None:
 
 def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
     n = len(given_list)
-    sorted_given_list = given_list.copy()  # Create a copy to avoid modifying the original list
+    sorted_given_list: list[int] = given_list.copy()
     quicksort(sorted_given_list, 0, n - 1)
-    left_index = 0
-    right_index = n - 1
+    left_index: int = 0
+    right_index: int = n - 1
     while left_index < right_index:
-        current_sum = sorted_given_list[left_index] + sorted_given_list[right_index]
+        current_sum: int = sorted_given_list[left_index] + sorted_given_list[right_index]
         if current_sum > two_sum:
             right_index = right_index - 1
         elif current_sum < two_sum:
