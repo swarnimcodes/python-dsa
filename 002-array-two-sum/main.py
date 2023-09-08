@@ -54,9 +54,12 @@ original list will not be preserved.
 
 Left Index must always be lesser than the right index since if they are equal
 we are looking at the same element and we don't want that in this case.
+
+To delve deeper, we could implement the sorting algorithm ourselves
+using quicksort technique.
 """
 
-def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
+def two_sum_exists_two_pointer_approach(given_list: list[int], two_sum: int) -> bool:
     sorted_given_list: list[int] = sorted(given_list)
     left_index: int = 0
     right_index: int = len(sorted_given_list) -1
@@ -66,6 +69,52 @@ def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
         elif sorted_given_list[left_index] + sorted_given_list[right_index] < two_sum:
             left_index = left_index + 1
         elif sorted_given_list[left_index] + sorted_given_list[right_index] == two_sum:
+            return True
+    return False
+
+"""
+Trying to implement the two pointer approach while also implementing quicksort.
+
+Quicksort is slightly faster than mergesort and heapsort, especially
+on large and random.
+
+It is a divid-and-conquer algorithm.
+
+Mathematical analysis of quicksort shows that, on average, the algorithm
+takes O(n log n) comparisons to sort n items.
+In the worst case, it makes O(n^2) comparisons.
+
+To learn more about quicksort: https://en.wikipedia.org/wiki/Quicksort
+"""
+def partition(arr: list[int], lo: int, hi: int) -> int:
+    pivot: int = arr[hi]
+    i: int = lo - 1
+    for j in range(lo, hi):
+        if arr[j] <= pivot:
+            i = i + 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[hi] = arr[hi], arr[i + 1]
+    return i + 1
+
+def quicksort(arr: list[int], lo: int, hi: int) -> None:
+    if lo < hi:
+        p = partition(arr, lo, hi)
+        quicksort(arr, lo, p - 1)
+        quicksort(arr, p + 1, hi)
+
+def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
+    n = len(given_list)
+    sorted_given_list = given_list.copy()  # Create a copy to avoid modifying the original list
+    quicksort(sorted_given_list, 0, n - 1)
+    left_index = 0
+    right_index = n - 1
+    while left_index < right_index:
+        current_sum = sorted_given_list[left_index] + sorted_given_list[right_index]
+        if current_sum > two_sum:
+            right_index = right_index - 1
+        elif current_sum < two_sum:
+            left_index = left_index + 1
+        elif current_sum == two_sum:
             return True
     return False
 
