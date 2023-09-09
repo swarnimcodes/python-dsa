@@ -25,8 +25,8 @@ def quicksort(arr: list[int], lo: int, hi: int) -> None:
     
 
 def main():
-    # unordered_list: list[int] = [10, 7, 6, 8, 3, 5, 5, 1, 1, 1, -1, 0, 2, 4, 9, 5]
-    unordered_list: list[int] = []
+    unordered_list: list[int] = [10, 7, 6, 8, 3, 5, 5, 1, 1, 1, -1, 0, 2, 4, 9, 5]
+    # unordered_list: list[int] = []
     lo: int = 0
     hi: int = len(unordered_list) - 1
     quicksort(unordered_list, lo, hi)

@@ -75,6 +75,8 @@ def two_sum_exists_two_pointer_approach(given_list: list[int], two_sum: int) -> 
 """
 Trying to implement the two pointer approach while also implementing quicksort.
 
+Generally considered to be the fastest for large datasets
+
 Quicksort is slightly faster than mergesort and heapsort, especially
 on large and random.
 
