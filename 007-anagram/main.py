@@ -58,6 +58,7 @@ def anagram(word, target) -> bool:
             return False
     return True
 
+
 def main():
     word = "ccac"
     target = "aaca"
