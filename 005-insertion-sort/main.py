@@ -1,6 +1,10 @@
 """
 Insertion Sort:
+Insertion sort makes a sorted list to its left
+as it traverses the list. It makes space for the new
+element while it traverses and puts it in its right place.
 
+Time complexity is O(n^2)
 
 References:
 - Wikipedia: https://en.wikipedia.org/wiki/Insertion_sort
