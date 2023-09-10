@@ -16,11 +16,11 @@ selection sort as they do not parellelize as effectively.
 References:
 - Wikipedia: https://en.wikipedia.org/wiki/Bubble_sort
 """
-import tqdm
+
 
 def bubblesort(arr: list[int]) -> None:
     swapped: bool = True
-    while swapped == True:
+    while swapped is True:
         swap_count: int = 0
         for i in range(0, len(arr) - 1):
             j: int = i + 1
@@ -29,10 +29,11 @@ def bubblesort(arr: list[int]) -> None:
                 swap_count += 1
         if swap_count == 0:
             swapped = False
-                
+
+
 def main():
     unordered_list = [10, 7, 6, 8, 3, 3, 3, 3, 1, 2, 10, 10, 10, 4, 9, 5]
-    # unordered_list = [0, 0, 1, -1, -2, -100, -1000000000000000000000000000000000]
+    # unordered_list = [0, 0, 1, -1, -2, -100, -10000000000000000000000000000]
     bubblesort(unordered_list)
     print(f"Ordered List: {unordered_list}")
 
