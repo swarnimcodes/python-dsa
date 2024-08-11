@@ -15,12 +15,15 @@ import unittest
 This is the brute force approach.
 Just traverse the given array/list twice
 """
+
+
 def two_sum_exists_naive(given_list: list[int], two_sum: int) -> bool:
     for i in given_list:
         for j in given_list:
             if i + j == two_sum and i != j:
                 return True
     return False
+
 
 """_summary_
 This is similar to the brute force approach
@@ -29,12 +32,14 @@ This is because the statement if sum_difference in given list just traverses
 the list and will have time complexity of O(n) in worst case
 """
 
+
 def two_sum_exists_naive_2(given_list: list[int], two_sum: int) -> bool:
     for i in given_list:
         sum_difference: int = two_sum - i
         if sum_difference in given_list and sum_difference != i:
             return True
     return False
+
 
 """
 Two Pointer Approach
@@ -59,10 +64,11 @@ To delve deeper, we could implement the sorting algorithm ourselves
 using quicksort technique.
 """
 
+
 def two_sum_exists_two_pointer_approach(given_list: list[int], two_sum: int) -> bool:
     sorted_given_list: list[int] = sorted(given_list)
     left_index: int = 0
-    right_index: int = len(sorted_given_list) -1
+    right_index: int = len(sorted_given_list) - 1
     while left_index < right_index:
         if sorted_given_list[left_index] + sorted_given_list[right_index] > two_sum:
             right_index = right_index - 1
@@ -71,6 +77,7 @@ def two_sum_exists_two_pointer_approach(given_list: list[int], two_sum: int) -> 
         elif sorted_given_list[left_index] + sorted_given_list[right_index] == two_sum:
             return True
     return False
+
 
 """
 Trying to implement the two pointer approach while also implementing quicksort.
@@ -90,6 +97,8 @@ The recursive nature of quicksort lends itself to parellelism.
 
 To learn more about quicksort: https://en.wikipedia.org/wiki/Quicksort
 """
+
+
 def partition(arr: list[int], lo: int, hi: int) -> int:
     pivot: int = arr[hi]
     i: int = lo - 1
@@ -100,11 +109,13 @@ def partition(arr: list[int], lo: int, hi: int) -> int:
     arr[i + 1], arr[hi] = arr[hi], arr[i + 1]
     return i + 1
 
+
 def quicksort(arr: list[int], lo: int, hi: int) -> None:
     if lo < hi:
         p = partition(arr, lo, hi)
         quicksort(arr, lo, p - 1)
         quicksort(arr, p + 1, hi)
+
 
 def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
     n = len(given_list)
@@ -113,7 +124,9 @@ def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
     left_index: int = 0
     right_index: int = n - 1
     while left_index < right_index:
-        current_sum: int = sorted_given_list[left_index] + sorted_given_list[right_index]
+        current_sum: int = (
+            sorted_given_list[left_index] + sorted_given_list[right_index]
+        )
         if current_sum > two_sum:
             right_index = right_index - 1
         elif current_sum < two_sum:
@@ -122,8 +135,8 @@ def two_sum_exists(given_list: list[int], two_sum: int) -> bool:
             return True
     return False
 
-class TestTwoSumExists(unittest.TestCase):
 
+class TestTwoSumExists(unittest.TestCase):
     def test_sum_doesnt_exist(self):
         # Test case 1: No valid two sum exists
         given_list = [1, -2, 1, 0, 5]
@@ -156,5 +169,6 @@ class TestTwoSumExists(unittest.TestCase):
         two_sum = 0
         self.assertEqual(two_sum_exists(given_list, two_sum), True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

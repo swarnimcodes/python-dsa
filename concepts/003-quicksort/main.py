@@ -14,17 +14,17 @@ def partition(arr: list[int], lo: int, hi: int) -> int:
         if arr[j] <= pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
-    arr[i+1], arr[hi] = arr[hi], arr[i+1]
+    arr[i + 1], arr[hi] = arr[hi], arr[i + 1]
 
-    return i+1
+    return i + 1
 
 
 def quicksort(arr: list[int], lo: int, hi: int) -> None:
     if lo < hi:
         p = partition(arr, lo, hi)
 
-        quicksort(arr, lo, p-1)
-        quicksort(arr, p+1, hi)
+        quicksort(arr, lo, p - 1)
+        quicksort(arr, p + 1, hi)
 
 
 def main():

@@ -6,6 +6,7 @@ in the array, and return false if every element is distinct.
 Resources:
 - Leetcode: https://leetcode.com/problems/contains-duplicate/
 """
+
 import timeit
 import sys
 
@@ -49,21 +50,21 @@ def partition(nums: list[int], lo, hi) -> int:
         if nums[j] <= pivot:
             i = i + 1
             nums[i], nums[j] = nums[j], nums[i]
-    nums[i+1], nums[hi] = nums[hi], nums[i+1]
-    return i+1
+    nums[i + 1], nums[hi] = nums[hi], nums[i + 1]
+    return i + 1
 
 
 def quicksort(nums: list[int], lo, hi) -> None:
     if lo < hi:
         p = partition(nums, lo, hi)
-        quicksort(nums, lo, p-1)
-        quicksort(nums, p+1, hi)
+        quicksort(nums, lo, p - 1)
+        quicksort(nums, p + 1, hi)
 
 
 def cont_dupl_qs(nums: int) -> bool:
     quicksort(nums, 0, len(nums) - 1)
     for i in range(0, len(nums) - 1):
-        if nums[i] == nums[i+1] and i+1 < len(nums):
+        if nums[i] == nums[i + 1] and i + 1 < len(nums):
             return True
     return False
 
@@ -87,6 +88,7 @@ def cont_dupl(nums: list[int]) -> bool:
             return True
         num_set.add(num)
     return False
+
 
 # def cont_dupl(nums: list[int]) -> bool:
 #     num_set = set(nums)
