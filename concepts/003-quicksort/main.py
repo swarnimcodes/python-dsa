@@ -22,6 +22,7 @@ def partition(arr: list[int], lo: int, hi: int) -> int:
 def quicksort(arr: list[int], lo: int, hi: int) -> None:
     if lo < hi:
         p = partition(arr, lo, hi)
+
         quicksort(arr, lo, p-1)
         quicksort(arr, p+1, hi)
 
